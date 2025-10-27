@@ -1,5 +1,4 @@
 # OOP_N01_Group10
-# Dự án OOP N01-Nhom10
 
 ## Câu 1 . Tiêu đề 
 **Quản lý cửa hàng xe**
