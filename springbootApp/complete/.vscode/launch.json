@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Run Spring Boot (port 8081)",
+      "request": "launch",
+      "mainClass": "com.example.servingwebcontent.ServingWebContentApplication",
+      "projectName": "serving-web-content-complete",
+      "cwd": "${workspaceFolder}/springbootApp/complete",
+      "args": "--server.port=8081",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "name": "Debug Spring Boot (port 8081)",
+      "request": "launch",
+      "mainClass": "com.example.servingwebcontent.ServingWebContentApplication",
+      "projectName": "serving-web-content-complete",
+      "cwd": "${workspaceFolder}/springbootApp/complete",
+      "args": "--server.port=8081",
+      "vmArgs": "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005",
+      "console": "integratedTerminal"
+    }
+  ]
+}

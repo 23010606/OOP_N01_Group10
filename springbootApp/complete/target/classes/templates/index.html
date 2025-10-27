@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +21,49 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
             color: var(--dark-color);
+        }
+        
+        .navbar {
+            background: var(--dark-color);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .user-section {
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .welcome-text {
+            margin: 0;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #c82333;
         }
         
         .container {
@@ -52,13 +95,6 @@
             bottom: -10px;
             left: 25%;
             border-radius: 2px;
-        }
-        
-        .subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto 2rem;
         }
         
         .dashboard {
@@ -113,13 +149,6 @@
             background: var(--secondary-color);
         }
         
-        footer {
-            text-align: center;
-            margin-top: 4rem;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
         @media (max-width: 768px) {
             .dashboard {
                 grid-template-columns: 1fr;
@@ -128,10 +157,31 @@
             h1 {
                 font-size: 2rem;
             }
+
+            .navbar .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .user-section {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="navbar-brand">Car Store Management</a>
+            <div class="user-section">
+                <p class="welcome-text" th:if="${session.user}" th:text="'Welcome, ' + ${session.user.username}"></p>
+                <a href="/logout" class="logout-btn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <header>
             <h1>Car Store Management</h1>
@@ -154,10 +204,6 @@
                 <a href="/invoices" class="btn">Manage Invoices</a>
             </div>
         </div>
-        
-        <footer>
-            <p></p>
-        </footer>
     </div>
 </body>
 </html>
